@@ -1,75 +1,46 @@
-//Import json5
-import JSON5 from 'https://unpkg.com/json5@2/dist/index.min.mjs';
+import JSON5 from 'https://unpkg.com/json5@2/dist/index.min.mjs'; 
 
-//Captura de elementos
+const classMap = {
+  Bárbaro: "brb",
+  Bardo: "brd",
+  Clérigo: "clr",
+  Druida: "drd",
+  Luchador: "fgt",
+  Mago: "mag",
+  Orco: "orc",
+  Pícaro: "rog",
+};
+
 const select = document.getElementById("Classe");
 const tituloClasse = document.getElementById("ClassName");
 const buttonClass = document.getElementById("ClassButton");
-const maxLevel = document.getElementById("maxLevel");
-const imgClassRender = document.getElementById("imgClass")
+const Habilidades = document.getElementById("skills");
+const imgClassRender = document.getElementById("imgClass");
 
-//Exportacion y renderizado de JSON5
+function updateClassInfo(className) {
+  tituloClasse.textContent = className;
+  imgClassRender.innerHTML = `<img src="../img/Class/${className}.jpeg" width="200px" />`;
 
-async function renderDruidaJSON5() {
-    try {
-        const response = await fetch('../assets/Classes/clr.json5');
-        const jsonString = await response.text();
-        const DruidaJSON = JSON5.parse(jsonString);
-        maxLevel.textContent= "Max Level: " + DruidaJSON.maxLevel;
-        
-        console.log(DruidaJSON.maxLevel);     
-    } catch(err) {
-        console.log("Error al leer el archivo desde la URL:", err);
-    }
+  renderJSON(className).catch(err => console.error("Error rendering JSON:", err));
 }
 
-//Logica de Class
-
-function selectClass() {
-    if(select.value=="Druida") {
-        tituloClasse.textContent="Druida";
-        imgClassRender.innerHTML="<img src=\"../img/Class/Druida.jpeg\" width=\"200px\" />";
-        renderDruidaJSON5()
-        return false;
-    }else if(select.value=="Clerigo") {
-        tituloClasse.textContent="Clerigo";
-        imgClassRender.innerHTML="<img src=\"../img/Class/Clerigo.jpeg\" width=\"200px\" />";
-        return false;
-    }else if(select.value=="Mago") {
-        tituloClasse.textContent="Mago";
-        imgClassRender.innerHTML="<img src=\"../img/Class/Mago.jpeg\" width=\"200px\" />";
-        return false;
-    }else if(select.value=="Picaro") {
-        tituloClasse.textContent="Picaro";
-        imgClassRender.innerHTML="<img src=\"../img/Class/Picaro.jpeg\" width=\"200px\" />";
-        return false;
-    }else if(select.value=="Guerrero") {
-        tituloClasse.textContent="Guerrero";
-        imgClassRender.innerHTML="<img src=\"../img/Class/Guerrero.jpeg\" width=\"200px\" />";
-        return false;
-    }else if(select.value=="Paladin") {
-        tituloClasse.textContent="Paladin";
-        imgClassRender.innerHTML="<img src=\"../img/Class/Paladin.jpeg\" width=\"200px\" />";
-        return false;
-    }
-    else if(select.value=="Cazador") {
-        tituloClasse.textContent="Cazador";
-        imgClassRender.innerHTML="<img src=\"../img/Class/Cazador.jpeg\" width=\"200px\" />";
-        return false;
-    }
-    else if(select.value=="Sacerdote") {
-        tituloClasse.textContent="Sacerdote";
-        imgClassRender.innerHTML="<img src=\"../img/Class/Sacerdote.jpeg\" width=\"200px\" />";
-        return false;
-    }else if(select.value=="Chaman") {
-        tituloClasse.textContent="Chaman";
-        imgClassRender.innerHTML="<img src=\"../img/Class/Chaman.jpeg\" width=\"200px\" />";
-        return false;
-    }else if(select.value=="Monje") {
-        tituloClasse.textContent="Monje";
-        imgClassRender.innerHTML="<img src=\"../img/Class/Monje.jpeg\" width=\"200px\" />";
-        return false;
-    }
-    return true;
+async function renderJSON(className) {
+  try {
+    const fullClassName = classMap[className];
+    const classFile = `../assets/Classes/${fullClassName}.json5`;
+    const response = await fetch(classFile);
+    const jsonString = await response.text();
+    const ClassJSON = JSON5.parse(jsonString);
+    const habilidades = ClassJSON.skills;
+    Habilidades.textContent = "Skills: " + habilidades.join(", ") + " .";
+  } catch (err) {
+    console.error("Error reading file:", err);
+  }
 }
-buttonClass.addEventListener('click', selectClass);
+
+buttonClass.addEventListener('click', function() {
+  const selectedClass = select.value;
+  updateClassInfo(selectedClass); // Call updateClassInfo on click
+});
+
+
