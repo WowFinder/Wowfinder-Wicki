@@ -16,6 +16,8 @@ const tituloClasse = document.getElementById("ClassName");
 const buttonClass = document.getElementById("ClassButton");
 const Habilidades = document.getElementById("skills");
 const imgClassRender = document.getElementById("imgClass");
+const pSpells = document.getElementById("spells")
+
 
 function updateClassInfo(className) {
   tituloClasse.textContent = className;
@@ -33,6 +35,12 @@ async function renderJSON(className) {
     const ClassJSON = JSON5.parse(jsonString);
     const habilidades = ClassJSON.skills;
     Habilidades.textContent = "Skills: " + habilidades.join(", ") + " .";
+    const spellsList = ClassJSON.features;
+    let level_1_features = spellsList.filter(spellsList => spellsList.level === 1);
+    
+    let SellLevel1 = level_1_features.map(spellsList => spellsList.feature);
+    pSpells.textContent = "Spells de nivel 1: " + SellLevel1.join(", ") + " .";
+    
   } catch (err) {
     console.error("Error reading file:", err);
   }
