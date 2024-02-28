@@ -1,6 +1,16 @@
 {
+  "name": "wicki",
+  "version": "0.0.1",
+  "description": "Wiki-style mobile app for WowFinder",
+  "repository": "https://github.com/WowFinder/Wowfinder-Wicki.git",
+  "author": "Andrea (https://github.com/AndreaKinder)",
   "dependencies": {
     "json5": "^2.2.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "babelify": "^10.0.0"
   },
   "packageManager": "yarn@4.1.0"
 }
