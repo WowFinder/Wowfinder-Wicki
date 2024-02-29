@@ -36,11 +36,15 @@ async function renderJSON(className) {
     const habilidades = ClassJSON.skills;
     Habilidades.textContent = "Skills: " + habilidades.join(", ") + " .";
     const spellsList = ClassJSON.features;
-    let level_1_features = spellsList.filter(spellsList => spellsList.level === 1);
-    
-    let SellLevel1 = level_1_features.map(spellsList => spellsList.feature);
-    pSpells.textContent = "Spells de nivel 1: " + SellLevel1.join(", ") + " .";
-    
+    const spellsByLevel = {};
+  for (let lvl = 1; lvl <= 20; lvl++) {
+    const levelSpells = spellsList.filter(spell => spell.level === lvl);
+    const spellNames = levelSpells.map(spell => spell.feature);
+    spellsByLevel[lvl] = spellNames;
+  }
+  for (let lvl = 1; lvl <= 20; lvl++) {
+    pSpells.textContent += ` Spells de nivel ${lvl}: ${spellsByLevel[lvl].join(", ")}. ||`;
+  }
   } catch (err) {
     console.error("Error reading file:", err);
   }
