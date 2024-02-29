@@ -75,7 +75,7 @@ h1 {
   
   /* Párrafos */
   div{
-    text-align: justify;
+    text-align: start;
   }
   p {
     font-size: 1rem;

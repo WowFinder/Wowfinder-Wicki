@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <div>
+        <div id="header">
         <img src="../img/ClasesLogo.png" alt="Logo de las clases del WOW" width="40">
         <h1>
             Classes
@@ -20,7 +20,7 @@
     </div>
     </header>
     <main>
-        <p>Seleccione la Classe</p>
+        <p id="selectClass">Seleccione la Classe</p>
         <div id="menuSelect">
             <select name="Classe" id="Classe">
                 <option value="Druida">Druida</option>
@@ -38,24 +38,40 @@
         </div>
         <h1 id="ClassName">(Sin seleccion)</h1>
         <div id="imgClass"></div>
-        <div class="divSkill"><p id="skills"></p></div>
-        <div class="divSkill"><p id="spells"><p></div>
+        <div class="divSkill"><p id="skills"></p>
+        <p id="spells"><p></div>
         <script type="module" src="/js/class.js"></script>
     </main>
 </body>
 </html>
 <style>
-    div{
+    #menuSelect, #header, #imgClass{
         display: flex;
         flex-direction: row;
         gap: 5px;
         justify-content: center;
         align-items: center;
+        margin: 20px;
+    }
+    #selectClass{
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    .divSkill{
+        align-items: center;
+        padding: 3% 15%;
+    }
+    #ClassName{
+        padding-top: 50px;
     }
     h1{
         align-self: center;
         margin: 0%;
         padding: 0%;
+    }
+    h4{
+        font-weight: bold;
+        margin: 0 5%;
     }
     img{
         border-radius: 100%;
@@ -86,6 +102,10 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+    }
+    span{
+        color: black;
+        font-weight: bold;
     }
  
 </style>
