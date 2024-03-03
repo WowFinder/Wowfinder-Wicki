@@ -53,7 +53,7 @@ async function renderJSON(className) {
 
 buttonClass.addEventListener('click', function() {
   const selectedClass = select.value;
-  updateClassInfo(selectedClass); // Call updateClassInfo on click
+  updateClassInfo(selectedClass); 
 });
 
 
