@@ -18,7 +18,7 @@
         </div>
     </header>
     <main>
-        <p>Selecciona el tipo de echizos</p>
+        <p>Selecciona el tipo de Hechizos:</p>
     <select name="spellsList" id="spellsList">
         <option value="arcane">Arcano</option>
         <option value="arts">Artes</option>
@@ -27,10 +27,13 @@
         <option value="occult">Occcult</option>
         <option value="primal">Primal</option>
     </select>
-    <button id="selectSpellList">Seleccionar Spells List</button>
-    <select name="levelSpellList" id="levelSpellList"></select>
-    <select name="spells" id="spells"></select>
-    <button id="selectSpell">Seleccionar Spell</button>
+    <button id="selectSpellList">Seleccionar</button>
+    <div id="selectRender">
+        <p>Seleccionar el Hechizo y su nivel:</p>
+        <select name="levelSpellList" id="levelSpellList"></select>
+        <select name="spells" id="spells"></select>
+        <button id="selectSpell">Seleccionar</button>
+    </div>
     <div id="renderSpell"></div>
     <script type="module" src="../js/spells.js"></script>
     </main>
@@ -48,6 +51,14 @@
         align-items: center;
         margin: 20px;
     }
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+    }
     h1{
         align-self: center;
         margin: 0%;
@@ -58,5 +69,24 @@
     }
     img{
         border-radius: 100%;
+    }
+    div{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 10px;
+    }
+    select{
+        width: 10em;
+        height: 2em;
+    }
+    button{
+        width: 10em;
+        height: 2em;
+    }   
+    #renderSpell{
+        
     }
 </style>

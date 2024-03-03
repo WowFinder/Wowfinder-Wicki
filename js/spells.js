@@ -20,6 +20,7 @@ const spells = spellListJSON['spells'];
 
 //render spellsList
 async function catchSpells() {
+  try {
     for (let level = 1; spells[level] != null; level++) {
         spellListFile=[];
         spellListFile.push(spells[level]);
@@ -28,7 +29,9 @@ async function catchSpells() {
             selectSpell.innerHTML += `<option value="${spells[level][spellInd].spell}">${spells[level][spellInd].spell}</option>`;
             console.log(level);
         }
-    }
+      }  
+    } catch (err) {
+      console.error("Error reading file:", err);}
 }
 
 spellListButton.addEventListener('click',catchSpells);
@@ -58,19 +61,30 @@ async function renderSpell() {
       const duration = spellToRenderJSONParsed['duration'];
       const castingTime = spellToRenderJSONParsed['castingTime'];
       const ranks = spellToRenderJSONParsed['ranks'];  // Assuming 'ranks' is the correct key
-  
-      // 5. Clear existing content (optional)
+
+
+      // 5. Clear existing content (optiona
       spellsRenderSpace.innerHTML = ''; // Clear previous spell details
-  
+      
       // 6. Render spell information
       spellsRenderSpace.innerHTML += `<h1>${spellName}</h1>`;
+      if (school!= undefined) {
       spellsRenderSpace.innerHTML += `<p><span>School: </span> ${school}</p>`;
-      spellsRenderSpace.innerHTML += `<p><span>Componentes: </span> ${components}</p>`;
-      spellsRenderSpace.innerHTML += `<p><span>Duracion: </span> ${duration}</p>`;
-      spellsRenderSpace.innerHTML += `<p><span>Tiempo de Lanzamiento: </span> ${castingTime}</p>`;
-      spellsRenderSpace.innerHTML += `<h2>Rangos</h2>`; // Use "Nivel" for Spanish
-  
-      // 7. Render ranks (improved loop logic)
+      }
+      if (components!= undefined) {
+        spellsRenderSpace.innerHTML += `<p><span>Componentes: </span> ${components}</p>`;
+      }
+      if (duration!= undefined) {
+        spellsRenderSpace.innerHTML += `<p><span>Duracion: </span> ${duration}</p>`;
+      }
+      if (castingTime!= undefined) {
+        spellsRenderSpace.innerHTML += `<p><span>Tiempo de Lanzamiento: </span> ${castingTime}</p>`;
+      }
+
+    spellsRenderSpace.innerHTML += `<h2>Rangos</h2>`;
+
+    
+// 7. Render ranks (improved loop logic)
       for (const rank of ranks) {
         for (const key in rank) {
           if (rank.hasOwnProperty(key)) { // Check for own properties to avoid prototype issues
@@ -78,11 +92,10 @@ async function renderSpell() {
           }
         }
       }
-    } catch (error) {
+     
+    }catch (error) {
       console.error('Error rendering spell:', error);
-      // Handle errors gracefully (e.g., display an error message to the user)
-    }
   }
-  
-  comfirmSpellButton.addEventListener('click', renderSpell);
+}
+comfirmSpellButton.addEventListener('click', renderSpell);
   
