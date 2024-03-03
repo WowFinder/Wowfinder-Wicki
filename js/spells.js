@@ -36,26 +36,53 @@ spellListButton.addEventListener('click',catchSpells);
 
 //render spells
 async function renderSpell() {
-    const spellToRender = selectSpell.value;
-    const spellToRenderFile = await fetch(`../assets/Spells/${spellToRender}.json5`);
-    const spellToRenderJSON = await spellToRenderFile.text();
-    const spellToRenderJSONParsed = JSON5.parse(spellToRenderJSON);
-    const ranksSpell = spellToRenderJSONParsed['ranks'];
-    const listRanks = ranksSpell;  
-//Text rendering spell
-    spellsRenderSpace.innerHTML = `<h1>${spellToRenderJSONParsed['key']}</h1>`;
-    spellsRenderSpace.innerHTML += `<p><span>School: </span> ${spellToRenderJSONParsed['sch']}</p>`;
-    spellsRenderSpace.innerHTML += `<p><span>Componentes: </span> ${spellToRenderJSONParsed['components']}</p>`;
-    spellsRenderSpace.innerHTML += `<p><span>Duracion: </span> ${spellToRenderJSONParsed['duration']}</p>`;
-    spellsRenderSpace.innerHTML += `<p><span>Tiempo de Lanzamiento: </span> ${spellToRenderJSONParsed['castingTime']}</p>`;
-   /* for (let rank = 1; listRanks.length != null; rank++) {
-        let rankSpell = listRanks[rank];
-        let objectRank = Object.keys(rankSpell);
-        spellsRenderSpace.innerHTML += `<h2>${rank}</h2>`;
-        for (let i = 0; 0 <= i || rankSpell[objectRank] != null; i++) {
-            spellsRenderSpace.innerHTML += `<p><span>${objectRank[i]}</span> ${rankSpell[objectRank[i]]}</p>`;
+    try {
+      // 1. Get selected spell and build file path
+      const spellToRender = selectSpell.value;
+      const spellToRenderFile = `../assets/Spells/${spellToRender}.json5`;
+  
+      // 2. Fetch spell data with error handling
+      const spellResponse = await fetch(spellToRenderFile);
+      if (!spellResponse.ok) {
+        throw new Error(`Failed to fetch spell data: ${spellResponse.statusText}`);
+      }
+  
+      // 3. Parse JSON with error handling
+      const spellToRenderJSON = await spellResponse.text();
+      const spellToRenderJSONParsed = JSON5.parse(spellToRenderJSON);
+  
+      // 4. Extract spell details
+      const spellName = spellToRenderJSONParsed['key'];
+      const school = spellToRenderJSONParsed['sch'];
+      const components = spellToRenderJSONParsed['components'];
+      const duration = spellToRenderJSONParsed['duration'];
+      const castingTime = spellToRenderJSONParsed['castingTime'];
+      const ranks = spellToRenderJSONParsed['ranks'];  // Assuming 'ranks' is the correct key
+  
+      // 5. Clear existing content (optional)
+      spellsRenderSpace.innerHTML = ''; // Clear previous spell details
+  
+      // 6. Render spell information
+      spellsRenderSpace.innerHTML += `<h1>${spellName}</h1>`;
+      spellsRenderSpace.innerHTML += `<p><span>School: </span> ${school}</p>`;
+      spellsRenderSpace.innerHTML += `<p><span>Componentes: </span> ${components}</p>`;
+      spellsRenderSpace.innerHTML += `<p><span>Duracion: </span> ${duration}</p>`;
+      spellsRenderSpace.innerHTML += `<p><span>Tiempo de Lanzamiento: </span> ${castingTime}</p>`;
+      spellsRenderSpace.innerHTML += `<h2>Rangos</h2>`; // Use "Nivel" for Spanish
+  
+      // 7. Render ranks (improved loop logic)
+      for (const rank of ranks) {
+        for (const key in rank) {
+          if (rank.hasOwnProperty(key)) { // Check for own properties to avoid prototype issues
+            spellsRenderSpace.innerHTML += `<p><span>${key}: </span> ${rank[key]}</p>`;
+          }
         }
-    }*/
-}
-
-comfirmSpellButton.addEventListener('click',renderSpell);
+      }
+    } catch (error) {
+      console.error('Error rendering spell:', error);
+      // Handle errors gracefully (e.g., display an error message to the user)
+    }
+  }
+  
+  comfirmSpellButton.addEventListener('click', renderSpell);
+  
