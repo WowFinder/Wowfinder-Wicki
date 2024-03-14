@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import '/css/estilos.css';
 
 function Options({ nameLista }) {
-    let lista = nameLista;
+    let lista = nameLista
     return (
-        <select>
+        <>
             {lista.map((item, index) => (
                 <option key={index} value={item}>
                     {item}
                 </option>
             ))}
-        </select>
+        </>
     );
 }
 
@@ -19,13 +19,18 @@ function Select({idName, nameLista}) {
     const handleSelectChange = (e) => {
         setSelected(e.target.value);
     };
+    console.log(nameLista);
+    console.log(selected);
     return (
-        <>
-           <select name={idName} id={idName}
+    <>
+        <select className="selectPage" name={idName} id={idName}
            value={selected} 
            onChange={handleSelectChange}
-           ></select>
+           >
             <Options nameLista={nameLista} />
-        </>
+        </select>
+    </>
     );
 }
+
+export default Select;

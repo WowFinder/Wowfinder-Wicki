@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Header from './global/header.jsx'
-import LinkPage from './linkPageButton.jsx'
+import LinkPage from './global/linkPageButton.jsx'
 import Footer from './global/footer.jsx'
 import '../css/estilos.css'
 
@@ -11,7 +11,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <main>
       <LinkPage href={'../html/Class.html'} text={'Classes'}/>
       <LinkPage href={'../html/spells.html'} text={'Spells'}/>
-      <LinkPage href={'../html/objects.html'} text={'Objects'}/>
     </main>
     <Footer/>
   </>  

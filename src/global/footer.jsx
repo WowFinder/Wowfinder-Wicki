@@ -1,4 +1,4 @@
-import '../css/estilos.css'
+import '/css/estilos.css'
 
 export default function LinkPage ({href, text}) {
     return(
