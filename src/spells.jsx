@@ -6,10 +6,6 @@ import '../css/estilos.css'
 import Select from './global/select.jsx'
 
 
-ReactDOM.createRoot
-
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
     <Header text={'Hechizos'}/>
