@@ -22,7 +22,7 @@ function App() {
             'rogue',
           ]}
           idName='class'
-          fileDirectory='asset-schemas/assets/Classes/'
+          fileName='asset-schemas/assets/Classes/'
         />
       </main>
       <Footer />

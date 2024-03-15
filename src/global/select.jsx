@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import '/css/estilos.css';
 import RenderSelect from '/js/renderSelect.js'
 
-let fileName;
 function Options({ nameLista }) {
     let lista = nameLista
     return (
@@ -15,16 +14,17 @@ function Options({ nameLista }) {
         </>
     );
 }
-function Select({idName, nameLista, fileDirectory}) {
+function Select({fileName, idName, nameLista}) {
     const [selected, setSelected] = useState("");
     const handleSelectChange = (e) => {
         setSelected(e.target.value);
     };
     console.log(nameLista);
     console.log(selected);
-    fileName= fileDirectory+selected+'.json5';
-    console.log(fileName);
-    RenderSelect(fileName)
+    console.log(fileName)
+    const fileClass = fileName+selected+'.json5'
+    console.log(fileClass)
+    fileName
     return (
     <>
         <select className="selectPage" name={idName} id={idName}
