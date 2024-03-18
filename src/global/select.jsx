@@ -24,7 +24,6 @@ function Select({fileName, idName, nameLista}) {
     console.log(fileName)
     const fileClass = fileName+selected+'.json5'
     console.log(fileClass)
-    fileName
     return (
     <>
         <select className="selectPage" name={idName} id={idName}
