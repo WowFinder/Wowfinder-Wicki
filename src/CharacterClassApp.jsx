@@ -22,7 +22,7 @@ function CharacterClassApp() {
             'rogue',
           ]}
           idName='class'
-          pathSelectFile='asset-schemas/assets/Classes/'
+          pathSelectFile='/asset-schemas/raw-assets/Classes/'
         />
       </main>
       <GlobalFooter />

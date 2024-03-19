@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import fileDataCapture from "../../js/fileDataCapture";
 
 
 function OptionsListToSelect({ optionsListEntry }) {
@@ -20,9 +21,10 @@ function OptionListContainerToSelect({optionsListEntry, pathSelectFile, idName }
     };
     console.log(optionsListEntry);
     console.log(selectedOptionNameFile);
-    console.log(pathSelectFile)
-    const selectedFile = `${pathSelectFile}${selectedOptionNameFile}.json5`
-    console.log(selectedFile)
+    console.log(pathSelectFile);
+    const selectedFile = `${pathSelectFile}${selectedOptionNameFile}.json5`;
+    console.log(selectedFile);
+    fileDataCapture(selectedFile);
     return (
         <select className="selectPage" name={idName} id={idName}
            value={selectedOptionNameFile} 
