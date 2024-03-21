@@ -7,13 +7,15 @@ import OptionListContainerToSelect from './global/OptionListContainerToSelect.js
  
 
 function CharacterClassApp() {
+  //TODO Convert to map natural names
+  //Add image especific class
+
   return (
     <>
       <CustomGlobalHeader customTitleText={'Classes'} />
       <main>
         <OptionListContainerToSelect
-          optionsListEntry={[
-            //TODO Convert to map natural names
+          optionsListEntry={[  
             'barbarian',
             'bard',
             'cleric',

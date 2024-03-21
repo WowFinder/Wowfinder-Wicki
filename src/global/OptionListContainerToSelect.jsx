@@ -5,6 +5,9 @@ import fileDataCapture from "../../js/fileDataCapture";
 
 
 function SelectionFileDataDisplay({ selectedFilePath }) {
+    //TODO add keyword to show data from the file
+    //TODO: add the rest of the parameters of the file
+
     const [selectedFile, setSelectedFile] = useState("Cargando...");
 
     useEffect(() => {
@@ -12,12 +15,11 @@ function SelectionFileDataDisplay({ selectedFilePath }) {
             setSelectedFile(data);
         });
     }, [selectedFilePath]);
-
+    
     return (
         <div>
             {selectedFile !== "Cargando..." && (
                 <h1>{selectedFile.key}</h1> 
-                //todo: add the rest of the parameters of the file
             )}
         </div>
     );
@@ -27,6 +29,7 @@ function SelectionFileDataDisplay({ selectedFilePath }) {
 
 function OptionsListToSelect({ optionsListEntry }) {
     let optionList = optionsListEntry;
+    //TODO add logic to relate file name to natural name in an object
     return (
         <>
             {optionList.map((item) => (
