@@ -4,7 +4,7 @@ import fileDataCapture from "../../js/fileDataCapture";
 
 
 
-function SelectionFileDataDisplay({ selectedFilePath, optionsListEntry }) {
+function SelectionFileDataDisplay({ selectedFilePath, optionsListEntry, fileKeywordList,  }) {
     //TODO add keyword to show data from the file
     //TODO: add the rest of the parameters of the file
     const [selectedFile, setSelectedFile] = useState("Cargando...");
@@ -14,16 +14,18 @@ function SelectionFileDataDisplay({ selectedFilePath, optionsListEntry }) {
             setSelectedFile(data);
         });
     }, [selectedFilePath]);
-    const keyFile = selectedFile.key;
+    const keyFile = selectedFile[fileKeywordList[0]];
+
     
     return (
-        <div>
+        <div key={"fileDisplay"}>
             {optionsListEntry.map((item) => (
                     Object.entries(item).map(([key]) => (
                 selectedFile !== "Cargando..." && (
                         keyFile==item[key] && (
                 <h1>{`${key}`}</h1>
                 ))))))}
+            {/*TODO Find common elements across files to apply automatic logic*/}
         </div>
     );
 }
@@ -43,7 +45,7 @@ function OptionsListToSelect({ optionsListEntry }) {
         </>
     );
 }
-function OptionListContainerToSelect({optionsListEntry, pathSelectFile, idName }) {
+function OptionListContainerToSelect({optionsListEntry, pathSelectFile, idName, fileKeywordList }) {
     const [selectedOptionNameFile, setSelectedOptionNameFile] = useState("barbarian");
     const handleSelectOptionNameFileChange = (e) => {
         setSelectedOptionNameFile(e.target.value);
@@ -62,7 +64,7 @@ function OptionListContainerToSelect({optionsListEntry, pathSelectFile, idName }
            >
             <OptionsListToSelect optionsListEntry={optionsListEntry} />
         </select>
-       <SelectionFileDataDisplay selectedFilePath={selectedFile} optionsListEntry={optionsListEntry} />
+       <SelectionFileDataDisplay selectedFilePath={selectedFile} optionsListEntry={optionsListEntry} fileKeywordList={fileKeywordList} />
         </>
     );
 }

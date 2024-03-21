@@ -24,6 +24,7 @@ function CharacterClassApp() {
             {Oraculo:'oracle'},
             {Picaro:'rogue'},
           ]}
+          fileKeywordList={['key', 'maxLevel', 'hitDie']}
           idName='class'
           pathSelectFile='/asset-schemas/raw-assets/Classes/'
         />
