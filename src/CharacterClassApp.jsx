@@ -13,6 +13,7 @@ function CharacterClassApp() {
       <main>
         <OptionListContainerToSelect
           optionsListEntry={[
+            //TODO Convert to map natural names
             'barbarian',
             'bard',
             'cleric',
