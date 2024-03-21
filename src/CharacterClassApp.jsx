@@ -7,8 +7,7 @@ import OptionListContainerToSelect from './global/OptionListContainerToSelect.js
  
 
 function CharacterClassApp() {
-  //TODO Convert to map natural names
-  //Add image especific class
+  //TODO Add image especific class
 
   return (
     <>
@@ -16,14 +15,14 @@ function CharacterClassApp() {
       <main>
         <OptionListContainerToSelect
           optionsListEntry={[  
-            'barbarian',
-            'bard',
-            'cleric',
-            'druid',
-            'fighter',
-            'mage',
-            'oracle',
-            'rogue',
+            {Barbaro:'barbarian'},
+            {Bardo:'bard'},
+            {Clerigo:'cleric'},
+            {Druida: 'druid'},
+            {Guerrero:'fighter'},
+            {Mago:'mage'},
+            {Oraculo:'oracle'},
+            {Picaro:'rogue'},
           ]}
           idName='class'
           pathSelectFile='/asset-schemas/raw-assets/Classes/'
