@@ -13,6 +13,7 @@ function CharacterClassApp() {
       <CustomGlobalHeader customTitleText={'Classes'} />
       <main>
         <OptionListContainerToSelect
+          defultValue={'barbarian'}
           optionsListEntry={[  
             {Barbaro:'barbarian'},
             {Bardo:'bard'},

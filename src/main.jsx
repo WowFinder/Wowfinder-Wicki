@@ -5,13 +5,13 @@ import GlobalFooterLinkToRepo from './global/GlobalFooterLinkToRepo.jsx'
 import '../css/styles.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // TODO: Objects Page
   // TODO: Factions Page
   // TODO: Races Page
   <>
     <CustomGlobalHeader customTitleText={'Wowfinder Wicki'}/>
     <main>
       <LinkSubpageButton href={'../html/CharacterClass.html'} text={'Classes'}/>
+      <LinkSubpageButton href={'../html/ObjectsItems.html'} text={'Objetos'} />
     </main>
     <GlobalFooterLinkToRepo/>
   </>  

@@ -4,7 +4,7 @@ import fileDataCapture from "../../js/fileDataCapture";
 
 
 
-function SelectionFileDataDisplay({ selectedFilePath, optionsListEntry, fileKeywordList,  }) {
+/*function SelectionFileDataDisplay({ selectedFilePath, optionsListEntry, fileKeywordList,  }) {
     //TODO add keyword to show data from the file
     //TODO: add the rest of the parameters of the file
     const [selectedFile, setSelectedFile] = useState("Cargando...");
@@ -25,10 +25,9 @@ function SelectionFileDataDisplay({ selectedFilePath, optionsListEntry, fileKeyw
                         keyFile==item[key] && (
                 <h1>{`${key}`}</h1>
                 ))))))}
-            {/*TODO Find common elements across files to apply automatic logic*/}
         </div>
     );
-}
+}*/
 
 
 
@@ -45,8 +44,8 @@ function OptionsListToSelect({ optionsListEntry }) {
         </>
     );
 }
-function OptionListContainerToSelect({optionsListEntry, pathSelectFile, idName, fileKeywordList }) {
-    const [selectedOptionNameFile, setSelectedOptionNameFile] = useState("barbarian");
+function OptionListContainerToSelect({optionsListEntry, pathSelectFile, idName, fileKeywordList, defultValue}) {
+    const [selectedOptionNameFile, setSelectedOptionNameFile] = useState({defultValue});
     const handleSelectOptionNameFileChange = (e) => {
         setSelectedOptionNameFile(e.target.value);
     };
@@ -64,7 +63,7 @@ function OptionListContainerToSelect({optionsListEntry, pathSelectFile, idName, 
            >
             <OptionsListToSelect optionsListEntry={optionsListEntry} />
         </select>
-       <SelectionFileDataDisplay selectedFilePath={selectedFile} optionsListEntry={optionsListEntry} fileKeywordList={fileKeywordList} />
+    {/*   <SelectionFileDataDisplay selectedFilePath={selectedFile} optionsListEntry={optionsListEntry} fileKeywordList={fileKeywordList} /> */}
         </>
     );
 }
