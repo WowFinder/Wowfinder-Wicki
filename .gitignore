@@ -131,3 +131,6 @@ dist
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# code todo detect
+todo-seach.cjs
