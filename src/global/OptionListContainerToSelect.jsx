@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import fileDataCapture from "../../js/fileDataCapture";
+import React, { useState } from "react";
 
 
 
@@ -35,12 +34,11 @@ function OptionsListToSelect({ optionsListEntry }) {
     let optionList = optionsListEntry;
     return (
         <>
-            {optionList.map((item) => (
-                Object.entries(item).map(([key]) => (
-                <option key={item[key]} value={item[key]}>
+            {Object.entries(optionList).map(([key, item]) => (
+                <option key={key} value={item[key]}>
                     {`${key}`}
                 </option>
-            ))))}
+            ))}
         </>
     );
 }

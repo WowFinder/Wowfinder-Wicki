@@ -1,8 +1,10 @@
-function CustomGlobalHeader({customTitleText}) {
+import React from "react";
+
+function CustomGlobalHeader({title}:{title:string} ) {
     return (
       <header>
         <h1>
-            {customTitleText}
+            {title}
         </h1>
       </header>
     );

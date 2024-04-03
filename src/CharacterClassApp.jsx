@@ -6,24 +6,22 @@ import OptionListContainerToSelect from './global/OptionListContainerToSelect.js
  
 
 function CharacterClassApp() {
-  //TODO: Add image especific class
-
-  return (
+     return (
     <>
       <CustomGlobalHeader customTitleText={'Classes'} />
       <main>
         <OptionListContainerToSelect
           defultValue={'barbarian'}
-          optionsListEntry={[  
-            {Barbaro:'barbarian'},
-            {Bardo:'bard'},
-            {Clerigo:'cleric'},
-            {Druida: 'druid'},
-            {Guerrero:'fighter'},
-            {Mago:'mage'},
-            {Oraculo:'oracle'},
-            {Picaro:'rogue'},
-          ]}
+          optionsListEntry={{  
+            Barbaro:'barbarian',
+            Bardo:'bard',
+            Clerigo:'cleric',
+            Druida: 'druid',
+            Guerrero:'fighter',
+            Mago:'mage',
+            Oraculo:'oracle',
+            Picaro:'rogue',
+          }}
           fileKeywordList={['key', 'maxLevel', 'hitDie']}
           idName='class'
           pathSelectFile='/asset-schemas/raw-assets/Classes/'
@@ -34,6 +32,6 @@ function CharacterClassApp() {
   );
 }
 
-const rootElement = document.getElementById('root');
-ReactDOM.createRoot(rootElement).render(<CharacterClassApp />);
+const rootElement = document.getElementById("root");
 
+ReactDOM.render(<CharacterClassApp />, rootElement);

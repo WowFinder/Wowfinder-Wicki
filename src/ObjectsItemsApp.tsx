@@ -1,20 +1,20 @@
 import ReactDOM from 'react-dom/client'
-import CustomGlobalHeader from './global/CustomGlobalHeader.jsx'
+import CustomGlobalHeader from './global/CustomGlobalHeader.js'
 import GlobalFooter from './global/GlobalFooterLinkToRepo.jsx'
 import '../css/styles.css'
 import OptionListContainerToSelect from './global/OptionListContainerToSelect.jsx'
+import React from 'react'
  
 
 function ObjectsItemsApp() {
-  //TODO: Add image especific class
   return (
     <>
-      <CustomGlobalHeader customTitleText={'Objetos e Items'} />
+      <CustomGlobalHeader title={'Objetos e Items'} />
       <main>
         <OptionListContainerToSelect
-          optionsListEntry={[
-            {Armadura:'heavyWoodenShield'},
-          ]}
+          optionsListEntry={
+            {Armadura:'heavyWoodenShield'}
+          }
           defultValue={'heavyWoodenShield'}
           fileKeywordList={['$type']}
           idName='class'
